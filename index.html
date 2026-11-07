@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f5fb">
+  <meta name="description" content="Catatan kehadiran dan aktivitas Aniza Private Tutoring.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <title>Aniza Private Tutoring — Kehadiran</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" data-page="home" aria-label="Ke beranda">
+        <span class="brand-mark">a.</span>
+        <span><strong id="brand-name">Aniza Private Tutoring</strong><small>CATATAN MENGAJAR</small></span>
+      </a>
+      <button class="icon-button" id="header-settings" type="button" aria-label="Pengaturan" title="Pengaturan"><span data-icon="settings"></span></button>
+    </header>
+
+    <main id="main-content">
+      <section class="page active" id="page-home" aria-labelledby="welcome-title">
+        <div class="welcome-row">
+          <div><p class="eyebrow" id="today-label"></p><h1 id="welcome-title">Selamat datang, Aniza <span>✦</span></h1><p class="muted">Setiap proses belajar punya cerita.</p></div>
+          <div class="avatar" aria-hidden="true">A</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-copy"><span class="pill"><span class="live-dot"></span> RUANG MENGAJAR ANDA</span><h2>Belajar hari ini,<br>bertumbuh esok hari.</h2><p>Rekam setiap sesi dan simpan momen belajar dengan rapi.</p><button class="button button-light" type="button" data-action="new">＋ Catat kehadiran</button></div>
+          <div class="hero-decoration" aria-hidden="true">✦</div>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">RINGKASAN BULAN INI</p><h2 id="month-heading"></h2></div><button class="text-button" type="button" data-page="report">Laporan <span>↗</span></button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon lavender" data-icon="book"></span><strong id="stat-sessions">0</strong><span>Pertemuan</span></article>
+          <article class="stat-card"><span class="stat-icon peach" data-icon="clock"></span><strong id="stat-hours">0 jam</strong><span>Total mengajar</span></article>
+          <article class="stat-card"><span class="stat-icon mint" data-icon="calendar"></span><strong id="stat-days">0</strong><span>Hari mengajar</span></article>
+          <article class="stat-card"><span class="stat-icon blue" data-icon="sparkle"></span><strong id="stat-average">0 mnt</strong><span>Rata-rata sesi</span></article>
+        </div>
+        <section class="content-card last-session" id="last-session-card"></section>
+        <div class="section-heading compact"><div><p class="eyebrow">CATATAN TERBARU</p><h2>Aktivitas terkini</h2></div><button class="text-button" type="button" data-page="history">Lihat semua <span>↗</span></button></div>
+        <div id="recent-list" class="stack-list"></div>
+        <div class="quick-links"><button class="quick-link" data-page="gallery" type="button"><span data-icon="image"></span> Galeri dokumentasi <b>→</b></button><button class="quick-link" data-page="calendar" type="button"><span data-icon="calendar"></span> Buka kalender <b>→</b></button></div>
+      </section>
+
+      <section class="page" id="page-calendar" aria-labelledby="calendar-title">
+        <div class="page-intro"><p class="eyebrow">JEJAK PERJALANAN</p><h1 id="calendar-title">Kalender</h1><p class="muted">Pilih tanggal untuk melihat sesi mengajar.</p></div>
+        <div class="content-card calendar-card"><div class="calendar-controls"><button class="icon-button" id="month-prev" aria-label="Bulan sebelumnya" type="button">‹</button><h2 id="calendar-month"></h2><button class="icon-button" id="month-next" aria-label="Bulan berikutnya" type="button">›</button></div><div class="calendar-weekdays"><span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span></div><div class="calendar-days" id="calendar-days"></div><div class="calendar-legend"><span><i></i> Ada kegiatan</span><span id="calendar-summary"></span></div></div>
+        <div class="section-heading compact"><div><p class="eyebrow">TANGGAL DIPILIH</p><h2 id="selected-date-label">Pilih tanggal</h2></div></div><div id="day-entries" class="stack-list"></div>
+      </section>
+
+      <section class="page" id="page-entry" aria-labelledby="entry-title">
+        <div class="page-intro"><p class="eyebrow">ARSIPKAN SESI BELAJAR</p><h1 id="entry-title">Catat kehadiran</h1><p class="muted">Detail kecil hari ini menjadi kenangan berharga.</p></div>
+        <form id="attendance-form" class="content-card form-card">
+          <input type="hidden" name="id">
+          <div class="form-grid"><label>Tanggal mengajar<input type="date" name="date" required></label><div class="time-row"><label>Mulai<input type="time" name="start" required></label><label>Selesai<input type="time" name="end" required></label></div></div>
+          <div class="duration-preview" id="duration-preview"><span data-icon="clock"></span><span>Durasi sesi akan dihitung otomatis</span></div>
+          <label>Nama / kategori kegiatan<input type="text" name="title" maxlength="100" placeholder="Contoh: Les Matematika" required></label>
+          <label>Materi yang diajarkan<input type="text" name="material" maxlength="160" placeholder="Contoh: Pecahan dan desimal" required></label>
+          <label>Catatan tambahan <span class="optional">(opsional)</span><textarea name="notes" rows="3" maxlength="1000" placeholder="Kemajuan, pekerjaan rumah, atau catatan lainnya..."></textarea></label>
+          <fieldset class="photo-field"><legend>Foto dokumentasi <span class="optional">(opsional, bisa lebih dari satu)</span></legend><div class="upload-row"><label class="upload-button"><span data-icon="camera"></span> Ambil foto<input type="file" name="photos-camera" accept="image/*" capture="environment" multiple></label><label class="upload-button"><span data-icon="image"></span> Pilih galeri<input type="file" name="photos-gallery" accept="image/*" multiple></label></div><div id="photo-preview" class="photo-preview"></div></fieldset>
+          <div class="form-actions"><button class="button button-secondary" id="cancel-edit" type="button">Batal</button><button class="button button-primary" type="submit">Simpan catatan</button></div>
+        </form>
+      </section>
+
+      <section class="page" id="page-history" aria-labelledby="history-title">
+        <div class="page-intro"><p class="eyebrow">SEMUA CERITA BELAJAR</p><h1 id="history-title">Riwayat</h1><p class="muted">Cari dan kelola catatan sesi mengajar Anda.</p></div>
+        <div class="filter-row"><label class="search-box"><span data-icon="search"></span><input id="history-search" type="search" placeholder="Cari materi atau catatan..." aria-label="Cari riwayat"></label><input id="history-month" type="month" aria-label="Filter bulan"></div>
+        <div id="history-list" class="stack-list"></div>
+      </section>
+
+      <section class="page" id="page-gallery" aria-labelledby="gallery-title">
+        <div class="page-intro"><p class="eyebrow">MOMEN YANG TERSIMPAN</p><h1 id="gallery-title">Galeri</h1><p class="muted">Dokumentasi dari perjalanan belajar.</p></div><div id="gallery-content"></div>
+      </section>
+
+      <section class="page" id="page-report" aria-labelledby="report-title">
+        <div class="page-intro"><p class="eyebrow">REKAP PERJALANAN</p><h1 id="report-title">Laporan bulanan</h1><p class="muted">Ringkasan sesi mengajar dalam satu bulan.</p></div>
+        <div class="report-toolbar"><label>Bulan laporan<input id="report-month" type="month"></label><div class="report-actions"><button class="button button-secondary" id="report-export" type="button">↓ Ekspor JSON</button><button class="button button-primary" id="print-report" type="button"><span data-icon="print"></span> Cetak / PDF</button></div></div>
+        <div id="report-content" class="report-paper"></div>
+      </section>
+
+      <section class="page" id="page-settings" aria-labelledby="settings-title">
+        <div class="page-intro"><p class="eyebrow">ATUR SESUAI KEBUTUHAN</p><h1 id="settings-title">Pengaturan</h1><p class="muted">Preferensi dan keamanan arsip lokal Anda.</p></div>
+        <form id="settings-form" class="content-card settings-card">
+          <h2>Profil aplikasi</h2><label>Nama pengajar<input name="teacherName" maxlength="60" required></label><label>Nama aplikasi<input name="appName" maxlength="80" required></label>
+          <h2>Waktu awal formulir</h2><p class="muted small">Tetap dapat diubah pada setiap pertemuan.</p><div class="time-row"><label>Jam mulai<input name="defaultStart" type="time" required></label><label>Jam selesai<input name="defaultEnd" type="time" required></label></div><button class="button button-primary" type="submit">Simpan pengaturan</button>
+        </form>
+        <div class="content-card data-card"><h2>Data & privasi</h2><p>Catatan dan foto tersimpan hanya di browser dan perangkat ini.</p><div class="data-actions"><button class="button button-secondary" id="export-data" type="button">↓ Backup JSON</button><label class="button button-secondary file-button">↑ Pulihkan JSON<input id="import-data" type="file" accept="application/json,.json"></label><button class="button button-danger" id="clear-data" type="button">Hapus semua data</button></div><button class="text-button" type="button" data-page="gallery">Buka galeri foto <span>↗</span></button><button class="text-button" type="button" data-page="report">Lihat laporan <span>↗</span></button></div>
+        <p class="privacy-note"><span data-icon="lock"></span> Data tidak dikirim ke server mana pun.</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+      <button class="nav-item active" type="button" data-page="home"><span data-icon="home"></span><small>Beranda</small></button>
+      <button class="nav-item" type="button" data-page="calendar"><span data-icon="calendar"></span><small>Kalender</small></button>
+      <button class="nav-item add-nav" type="button" data-action="new" aria-label="Tambah kehadiran"><span>＋</span><small>Tambah</small></button>
+      <button class="nav-item" type="button" data-page="history"><span data-icon="list"></span><small>Riwayat</small></button>
+      <button class="nav-item" type="button" data-page="settings"><span data-icon="user"></span><small>Profil</small></button>
+    </nav>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="detail-dialog" class="detail-dialog"><form method="dialog"><button class="dialog-close" aria-label="Tutup">×</button></form><div id="detail-content"></div></dialog>
+  <dialog id="image-dialog" class="image-dialog"><form method="dialog"><button class="dialog-close" aria-label="Tutup">×</button></form><img id="image-large" alt="Foto dokumentasi kegiatan"><p id="image-caption"></p></dialog>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
